@@ -4,8 +4,8 @@ import os
 
 sub_set = ['RG18', 'ADIM6', 'S22', 'S66', 'HEAVY28', 'WATER27', 'CARBHB12', 'PNICO23', 'HAL59', 'AHB21', 'CHB6', 'IL16',
            'IDISP', 'ICONF', 'ACONF', 'Amino20x4', 'PCONF21', 'MCONF', 'SCONF', 'UPU23', 'BUT14DIOL']
-base = Path("/mnt/scratch2/users/40249832/168-GMTKN/non-Co/")
-
+base = Path(os.getcwd())
+base = base.parent / "non-Co"
 
 def check_orca_finish(orca_file):
     """
