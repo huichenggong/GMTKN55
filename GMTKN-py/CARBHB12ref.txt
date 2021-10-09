@@ -1,0 +1,20 @@
+# 
+   Systems 
+ Stoichiometry 
+ Ref. 
+
+ 1   1O  1O_A   1O_B   -1 1 1   5.370
+ 2   2O  2O_A   2O_B   -1 1 1   6.047
+ 3   3O  3O_A   3O_B   -1 1 1   2.421
+ 4   4O  4O_A   4O_B   -1 1 1   9.967
+ 5   1N  1N_A   1N_B   -1 1 1   2.357
+ 6   2N  2N_A   2N_B   -1 1 1   3.021
+ 7   3N  3N_A   3N_B   -1 1 1   1.205
+ 8   4N  4N_A   4N_B   -1 1 1   4.177
+ 9   1CL  1CL_A   1CL_B   -1 1 1   7.839
+ 10   2CL  2CL_A   2CL_B   -1 1 1   10.483
+ 11   3CL  3CL_A   3CL_B   -1 1 1   3.241
+ 12   4CL  4CL_A   4CL_B   -1 1 1   16.296
+
+
+
