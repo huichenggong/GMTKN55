@@ -1,0 +1,5 @@
+! B97-3c TightSCF NOSOSCF
+%maxcore 2500 #memory in MB
+%pal
+    nprocs 9
+end

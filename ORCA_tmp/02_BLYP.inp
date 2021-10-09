@@ -1,0 +1,9 @@
+! BLYP D3 GCP(DFT/TZ) def2-TZVPP def2/J TightSCF NOSOSCF
+%maxcore 3500 #memory in MB
+%pal
+    nprocs 10
+end
+%scf
+   Guess MORead
+   MOInp "01_B973c.gbw"
+end
