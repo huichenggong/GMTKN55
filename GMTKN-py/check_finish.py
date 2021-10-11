@@ -4,6 +4,7 @@ import os
 
 sub_set = ['RG18', 'ADIM6', 'S22', 'S66', 'HEAVY28', 'WATER27', 'CARBHB12', 'PNICO23', 'HAL59', 'AHB21', 'CHB6', 'IL16',
            'IDISP', 'ICONF', 'ACONF', 'Amino20x4', 'PCONF21', 'MCONF', 'SCONF', 'UPU23', 'BUT14DIOL']
+sub_set = ['ACONF', 'AHB21', 'ADIM6', 'Amino20x4']
 base = Path(os.getcwd())
 base = base.parent / "non-Co"
 
@@ -25,19 +26,19 @@ def check_orca_finish(orca_file):
 
 
 ###Check finish
-f_name = "06_DSD-BLYP"
+f_name = "04_DLPNOCCSDT"
 rerun_ls = []
 for s in sub_set:
     char_mul = base/("CHARGE_MULTIPLICITY_%s.txt"%s)
     f1 = base/s
     print("#",s)
-    with open(char_mul, 'r') as f:
+    with open(str(char_mul), 'r') as f:
         lines = f.readlines()
     for line in lines:
         struc_name, charge, mul = line.split()
         struc_fold = f1/struc_name
         orca_file = struc_fold/(f_name+".out")
-        if not check_orca_finish(orca_file):
+        if not check_orca_finish(str(orca_file)):
             print("cd",struc_fold)
             print("sbatch K-06.sh")
 

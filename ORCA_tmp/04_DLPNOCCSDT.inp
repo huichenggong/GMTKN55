@@ -1,7 +1,7 @@
-! DLPNO-CCSD(T) def-QZVPP def-QZVPP/C RIJCOSX def2/J TIGHTSCF TIGHTPNO
+! DLPNO-CCSD(T) def2-QZVPP def2-QZVPP/C RIJCOSX def2/J TIGHTSCF TIGHTPNO
 %maxcore 6000 #memory in MB
 %pal
-    nprocs 10
+    nprocs 14
 end
 %scf
    Guess MORead
