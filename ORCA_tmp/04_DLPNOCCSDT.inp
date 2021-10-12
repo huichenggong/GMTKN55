@@ -1,9 +1,9 @@
-! DLPNO-CCSD(T) def2-QZVPP def2-QZVPP/C RIJCOSX def2/J TIGHTSCF TIGHTPNO
-%maxcore 6000 #memory in MB
+! DLPNO-CCSD(T) def2-QZVPP def2-QZVPP/C RIJCOSX def2/J TIGHTSCF TIGHTPNO NOSOSCF
+%maxcore 6500 #memory in MB
 %pal
-    nprocs 14
+    nprocs 4
 end
 %scf
    Guess MORead
-   MOInp "02_BLYP.gbw"
+   MOInp "save04.gbw"
 end
