@@ -157,6 +157,12 @@ class BenchmarkSet:
         else:
             raise ValueError("Ref haven't been set")
 
+    def get_ref_num(self):
+        if self.index_list:
+            return len(self.index_list)
+        else:
+            raise ValueError("Ref haven't been set")
+
     def calc_benchmark_data(self, level):
         if level in self.bench_data.keys():
             raise ValueError("The same level has been calculated")
