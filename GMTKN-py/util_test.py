@@ -34,7 +34,7 @@ print("[INFO] Test class Structure")
 sub_set = ['RG18', 'ADIM6', 'S22', 'S66', 'HEAVY28', 'WATER27', 'CARBHB12', 'PNICO23', 'HAL59', 'AHB21', 'CHB6', 'IL16',
            'IDISP', 'ICONF', 'ACONF', 'Amino20x4', 'PCONF21', 'MCONF', 'SCONF', 'UPU23', 'BUT14DIOL']
 for s in sub_set:
-    B_set = BenchmarkSet('../../non-Co/CHARGE_MULTIPLICITY_%s.txt' % s, s)
+    B_set = BenchmarkSet('../non-Co/CHARGE_MULTIPLICITY_%s.txt' % s, s)
     B_set.set_ref("%sref.txt" % s)
     index_list, system_list, stoich_list, ref_E_list = B_set.get_ref()
 for i in B_set.get_struct_names():
