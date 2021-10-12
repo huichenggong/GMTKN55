@@ -1,0 +1,6 @@
+! BLYP D3 GCP(DFT/TZ) def2-TZVPP def2/J TightSCF NOSOSCF Grid4
+%maxcore 2500 #memory in MB
+%pal
+    nprocs 4
+end
+
