@@ -4,6 +4,19 @@ reproduce the benchmark from DOI:10.1039/C7CP04913G
 # A problem in using GCP with DFT especially with rare gases (RG18 data set)
 ![image](GMTKN-py/AUE_gcp.png)
 
+# How to use
+```
+cd non-Co/
+```
+Download the structure in the GMTKN55
+```
+bash download.sh
+```
+Prepare the charge multiplicity line in orca input under each foler
+```
+bash Charge_Multiplicity.sh
+```
+
 # orca template in ORCA_tmp
 ## 01_B973c.inp
 ! B97-3c TightSCF NOSOSCF  
@@ -29,7 +42,7 @@ ORCA5
 ORCA4  
 orca4/5 gbw files are not compatibale for each other
 
-## 06
+## 06_BLYP.inp
 ! BLYP D3 def2-TZVPP def2/J TightSCF NOSOSCF  
 ORCA5  
 no gcp correction
