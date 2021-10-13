@@ -25,7 +25,7 @@ This job require heavy IO
 ORCA5  
 
 ## 05_BLYP_orca4.inp
-! BLYP D3 GCP(DFT/TZ) def2-TZVPP def2/J TightSCF NOSOSCF Grid4
+! BLYP D3 GCP(DFT/TZ) def2-TZVPP def2/J TightSCF NOSOSCF Grid4  
 ORCA4  
 orca4/5 gbw files are not compatibale for each other
 
