@@ -40,9 +40,18 @@ ORCA5
 ## 05_BLYP_orca4.inp
 ! BLYP D3 GCP(DFT/TZ) def2-TZVPP def2/J TightSCF NOSOSCF Grid4  
 ORCA4  
-orca4/5 gbw files are not compatibale for each other
+orca4/5 gbw files are not compatibale for each other  
 
 ## 06_BLYP.inp
 ! BLYP D3 def2-TZVPP def2/J TightSCF NOSOSCF  
 ORCA5  
-no gcp correction
+no gcp correction  
+
+# Reference
+1. GMTKN55  
+A look at the density functional theory zoo with the advanced GMTKN55 database for general main group thermochemistry, kinetics and noncovalent interactions  
+https://doi.org/10.1039/C7CP04913G  
+https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/GMTKN/gmtkn55  
+2. gCP correction  
+A geometrical correction for the inter- and intra-molecular basis set superposition error in Hartree-Fock and density functional theory calculations for large systems  
+https://doi.org/10.1063/1.3700154  
