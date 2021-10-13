@@ -9,6 +9,7 @@ class ORCAoutput:
             raise IOError("ORCA output file doesn't exist")
         with open(self.file_name) as f:
             self.lines = f.read()
+
     def check_finish(self):
         if "ORCA TERMINATED NORMALLY" in self.lines:
             return True
@@ -29,8 +30,40 @@ class ORCAoutput:
             else:
                 raise ValueError("Energy Unit Can not understand")
 
+
+class CP2Koutput:
+    def __init__(self, file_name):
+        if os.path.isfile(file_name):
+            self.file_name = file_name
+        else:
+            raise IOError("CP2K output file doesn't exist")
+        with open(self.file_name) as f:
+            self.lines = f.read()
+        if not ("GLOBAL| Run type                                                         ENERGY" in self.lines):
+            raise ValueError("CP2Koutput can only handle single point calculation")
+
+    def check_finish(self):
+        if "SCF run converged" in self.lines:
+            return True
+        else:
+            return False
+
+    def get_energy(self, unit="Hartree"):
+        """Single Point Energy in Hartree"""
+        p = re.search(r'  Total energy:.*', self.lines)
+        if not p: # if re doesn't match, p is None, raise Error
+            raise IOError('Can not find "  Total energy:"')
+        else:
+            E = float(p.group(0).split()[-1])
+            if unit=="Hartree":
+                return E
+            if unit=="kcal/mol":
+                return E * 627.509469
+            else:
+                raise ValueError("Energy Unit Can not understand")
+
 class Structure:
-    def __init__(self, charge, multiplicity):
+    def __init__(self, charge, multiplicity, QM="ORCA"):
         """
         :param charge: int
         :param multiplicity: int
@@ -42,6 +75,7 @@ class Structure:
         self.charge = charge
         self.multiplicity = multiplicity
         self.energy = {}
+        self.QM=QM
 
     def __str__(self):
         return str(self.energy)
@@ -64,6 +98,10 @@ class Structure:
     def set_Elevel_ORCA(self, level, file_name):
         o_out = ORCAoutput(file_name)
         self.energy[level] = o_out.get_energy(unit="kcal/mol")
+
+    def set_Elevel_CP2K(self, level, file_name):
+        c_out = CP2Koutput(file_name)
+        self.energy[level] = c_out.get_energy(unit="kcal/mol")
 
     def get_energy(self):
         """get the whole energy dictionary"""
