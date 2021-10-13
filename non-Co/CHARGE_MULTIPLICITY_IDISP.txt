@@ -1,0 +1,13 @@
+F14f 0 1
+F14l 0 1
+F22f 0 1
+F22l 0 1
+ant 0 1
+antdimer 0 1
+h2 0 1
+octane1 0 1
+octane2 0 1
+pc22 0 1
+pxylene 0 1
+undecan1 0 1
+undecan2 0 1
