@@ -1,10 +1,11 @@
 import os
 import re
 
+
 class ORCAoutput:
     def __init__(self, file_name):
         if os.path.isfile(file_name):
-            self.file_name=file_name
+            self.file_name = file_name
         else:
             raise IOError("ORCA output file doesn't exist")
         with open(self.file_name) as f:
@@ -19,13 +20,13 @@ class ORCAoutput:
     def get_energy(self, unit="Hartree"):
         """Single Point Energy in Hartree"""
         p = re.search(r'FINAL SINGLE POINT ENERGY.*', self.lines)
-        if not p: # if re doesn't match, p is None, raise Error
+        if not p:  # if re doesn't match, p is None, raise Error
             raise IOError('Can not find"FINAL SINGLE POINT ENERGY"')
         else:
             E = float(p.group(0).split()[-1])
-            if unit=="Hartree":
+            if unit == "Hartree":
                 return E
-            if unit=="kcal/mol":
+            if unit == "kcal/mol":
                 return E * 627.509469
             else:
                 raise ValueError("Energy Unit Can not understand")
@@ -50,17 +51,20 @@ class CP2Koutput:
 
     def get_energy(self, unit="Hartree"):
         """Single Point Energy in Hartree"""
+        if not self.check_finish():
+            raise ValueError("This CP2K job didn't finish properly")
         p = re.search(r'  Total energy:.*', self.lines)
-        if not p: # if re doesn't match, p is None, raise Error
+        if not p:  # if re doesn't match, p is None, raise Error
             raise IOError('Can not find "  Total energy:"')
         else:
             E = float(p.group(0).split()[-1])
-            if unit=="Hartree":
+            if unit == "Hartree":
                 return E
-            if unit=="kcal/mol":
+            if unit == "kcal/mol":
                 return E * 627.509469
             else:
                 raise ValueError("Energy Unit Can not understand")
+
 
 class Structure:
     def __init__(self, charge, multiplicity, QM="ORCA"):
@@ -69,13 +73,13 @@ class Structure:
         :param multiplicity: int
         """
         if isinstance(charge, int) and isinstance(multiplicity, int):
-           pass
+            pass
         else:
             raise ValueError("Charge and Multiplicity should be int")
         self.charge = charge
         self.multiplicity = multiplicity
         self.energy = {}
-        self.QM=QM
+        self.QM = QM
 
     def __str__(self):
         return str(self.energy)
@@ -120,17 +124,17 @@ class Structure:
 class BenchmarkSet:
     def __init__(self, file_name, set_name):
         self.set_name = set_name
-        #Check file existence
+        # Check file existence
         if os.path.isfile(file_name):
             pass
         else:
             raise IOError("Charge-Multilicity file doesn't exist")
-        #Build structure inf table
+        # Build structure inf table
         self.struct_table = {}
         with open(file_name) as f:
             lines = f.readlines()
         for line in lines:
-            #print(line)
+            # print(line)
             struc_name, charge, mul = line.split()
             self.struct_table[struc_name] = Structure(int(charge), int(mul))
 
@@ -140,10 +144,10 @@ class BenchmarkSet:
         self.stoich_list = []
 
     def __str__(self):
-        return str(self.set_name)+':'+str(list(self.struct_table.keys()))
+        return str(self.set_name) + ':' + str(list(self.struct_table.keys()))
 
     def __repr__(self):
-        return "BenchmarkSet<"+str(self.set_name)+':'+str(list(self.struct_table.keys()))+'>'
+        return "BenchmarkSet<" + str(self.set_name) + ':' + str(list(self.struct_table.keys())) + '>'
 
     def __getitem__(self, struct):
         return self.struct_table[struct]
