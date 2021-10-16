@@ -1,5 +1,5 @@
 base=$PWD
-orca_inp=06_BLYP
+orca_inp=08_BLYP_SVP_gcp
 
 
 for subset in ADIM6 AHB21 Amino20x4 BUT14DIOL CARBHB12 CHB6 HAL59 HEAVY28 ICONF IDISP IL16 MCONF PCONF21 PNICO23 RG18 S22 S66 SCONF UPU23 WATER27 
@@ -18,7 +18,7 @@ do
 #SBATCH --ntasks-per-node=4
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=3G
-#SBATCH --time=0:30:00
+#SBATCH --time=0:15:00
 #SBATCH --partition=avx512,hipri,k2-hipri
 #SBATCH --exclude=node009
 
